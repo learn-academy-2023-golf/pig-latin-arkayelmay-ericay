@@ -4,7 +4,9 @@ import butcherPigImage from "./assets/butcherPig.jpeg";
 
 const App = () => {
   // ACTION ITEM: to make the development process easier there are some preassigned words in the input field, when you are ready for your full user experience delete the test words passed to useState and pass an empty string
-  const [userInput, setUserInput] = useState("");
+  const [userInput, setUserInput] = useState(
+    "apple are great squeaky query equal"
+  );
   const [inputTranslated, setInputTranslated] = useState("");
 
   // ACTION ITEM: the "myPigLatinCodeHere" function is where you will put your logic to translate the sentence entered by the user into Pig Latin
@@ -12,6 +14,9 @@ const App = () => {
     // NO MODIFICATION NEEDED: the variable "arrayOfUserInput" will contain the text input from the user split into an array of words
     const arrayOfUserInput = userInput.split(" ");
     console.log("arrayOfUserInput:", arrayOfUserInput);
+
+    const words = userInput.split("");
+    console.log("words", words);
 
     // NO MODIFICATION NEEDED: now that we have an array of words, we can map over the array and look at each word
     const translatedWordsArray = arrayOfUserInput.map((eachWord) => {
@@ -29,8 +34,44 @@ const App = () => {
       });
       console.log("vowelsArray:", vowelsArray);
 
-      // ACTION ITEM: your Pig Latin logic goes here!
-      eachWord = eachWord + "way";
+      // // ACTION ITEM: your Pig Latin logic goes here!
+
+      // *** Words the start with a vowel ***
+      if (
+        eachWord[0] === "a" ||
+        eachWord[0] === "e" ||
+        eachWord[0] === "i" ||
+        eachWord[0] === "o" ||
+        eachWord[0] === "u"
+      ) {
+        eachWord = eachWord + "way";
+      } else if (eachWord.includes("qu")) {
+        const squ = eachWord.split("qu");
+        squ.push("qu");
+        const squ2 = squ.join("") + "ay";
+
+        eachWord = squ2;
+        console.log(squ2);
+
+        if (squ2[0] !== "q") {
+          const zeroIndex = squ2.split("").slice(1).join("");
+
+          const index = squ2[0];
+
+          const qu = zeroIndex.split("quay").join(index) + "quay";
+
+          console.log(qu);
+
+          eachWord = qu;
+        }
+
+        // ueryqay
+
+        // // console.log(squ2.slice())
+
+        // console.log(squ2, zeroIndex);
+      }
+
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord;
     });
