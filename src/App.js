@@ -35,46 +35,64 @@ const App = () => {
       console.log("vowelsArray:", vowelsArray);
 
       // // ACTION ITEM: your Pig Latin logic goes here!
-
+          // eatgray
       // *** Words the start with a vowel ***
       if (
         eachWord[0] === "a" ||
         eachWord[0] === "e" ||
         eachWord[0] === "i" ||
         eachWord[0] === "o" ||
-        eachWord[0] === "u"
-      ) {
+        eachWord[0] === "u" 
+      ) 
+      {
         eachWord = eachWord + "way";
+    
       } else if (eachWord.includes("qu")) {
-        const squ = eachWord.split("qu");
-        squ.push("qu");
-        const squ2 = squ.join("") + "ay";
+        const [start, rest] = eachWord.split("qu")
+        console.log(start);
+        console.log(rest)
+        eachWord = rest + start + "quay";
 
-        eachWord = squ2;
-        console.log(squ2);
 
-        if (squ2[0] !== "q") {
-          const zeroIndex = squ2.split("").slice(1).join("");
-
-          const index = squ2[0];
-
-          const qu = zeroIndex.split("quay").join(index) + "quay";
-
-          console.log(qu);
-
-          eachWord = qu;
+      } else {
+        const vOwels = eachWord.match(vowelsArray.map(vOwels => vOwels)) ;
+        if (vOwels){
+          eachWord=vOwels[2] + vOwels[1] + "ay"
+       
         }
+      }
+
+
+        // squ.push("qu");
+        // const squ2 = squ.join("") + "ay";
+      
+        // eachWord = squ2;
+        // console.log(squ2); 
+
+        
+        // if (squ2[0] !== "q") {
+        //   const zeroIndex = squ2.split("").slice(1).join("");
+
+        //   const index = squ2[0];
+
+        //   const qu = zeroIndex.split("quay").join(index) + "quay";
+
+        //   console.log(qu);
+
+        //   eachWord = qu;
+        //  console.log(squ2, zeroIndex);
+
+
 
         // ueryqay
 
-        // // console.log(squ2.slice())
+        // console.log(squ2.slice())
 
-        // console.log(squ2, zeroIndex);
-      }
+       
 
       // ACTION ITEM: this return will be the output of your Pig Latin'd code
       return eachWord;
-    });
+    })
 
     // NO MODIFICATION NEEDED: once the code has been modified it gets joined from an array back to a string
     const translatedWords = translatedWordsArray.join(" ");

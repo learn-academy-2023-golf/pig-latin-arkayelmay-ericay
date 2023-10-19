@@ -126,3 +126,16 @@ Each team will give a brief (three minute) presentation of their application. Pr
 - First team member: What was your team's approach to solving this problem? Did the initial approach work out in the end?
 - Second team member: What was the hardest thing about this project? What is your biggest takeaway?
 - Third team member (if applicable): How did you manage the workflow in a group of three?
+
+
+Psuedo code:
+ "+way"
+Iterating through words of array using if statement, if first index of word is a vowel then add way at the end. 
+
+if statement, filter through each word, if index [0] is a vowel then add "way" 
+
+else if statement, if each word has "qu" then push qu to the end and add "+ay"
+
+use split to split each word and filter through the words to find vowels and add way. 
+
+Use conditionals to evaluate. 
